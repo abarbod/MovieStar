@@ -1,0 +1,62 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+
+<div class="container">
+  <div class="row">
+    <div class="col pt-xl-5 pl-xl-5">
+
+
+      <form #f="ngForm">
+        <div class="form-group row">
+          <label for="colFormLabelLg" class="col-sm-5 col-form-label col-form-label-lg">Title</label>
+          <div class="col-sm-10">
+            <input 
+              class="form-control form-control-lg" 
+              type="text" 
+              [(ngModel)]="selectedMovie.title" 
+              name="title" 
+              placeholder="Title.." 
+              required
+            />
+
+          </div>
+        </div><br />
+
+        <div class="form-group row">
+          <label for="colFormLabelLg" class="col-sm-5 col-form-label col-form-label-lg">Release Date</label>
+          <div class="col-sm-10">
+            <input class="form-control form-control-lg" type="text" [(ngModel)]="selectedMovie.year" name="Release-Date" placeholder="Release Date...">
+          </div>
+        </div><br />
+
+        <div class="form-group row">
+          <label class="col-sm-5 col-form-label col-form-label-lg">Description</label>
+          <div class="col-sm-10">
+            <textarea class="form-control form-control-lg" type="text" [(ngModel)]="selectedMovie.desc" name="Description" placeholder="Description..."></textarea>
+          </div>
+        </div>
+      </form>
+      
+      <button class="btn btn-success btn-space" (click)="createMovie()" [hidden]="isMovieClicked" >New Movie</button>
+      <button class="btn btn-primary btn-space" (click)="updateMovie()" [hidden]="!f.valid || !isMovieClicked" >Update Movie</button>
+      <button class="btn btn-danger btn-space" (click)="deleteMovie()" [hidden]="!f.valid || !isMovieClicked"  >Delete Movie</button>
+      <button class="btn btn-danger btn-space" (click)="onClear()" [hidden]="!f.valid" >Clear</button>
+
+     
+
+    </div>
+    <div class="col pt-xl-5 pl-xl-5">
+
+      <p *ngFor="let movie of movies">
+
+        <a class="list-group-item clearfix" (click)="movieClicked(movie)">
+          <div class="pull-left">
+            <h4 class="list-group-item-heading">{{ movie.title }}</h4>
+      <h5 class="list-group-item-text"> - {{ movie.year }}</h5>
+      <p class="list-group-item-text">{{ movie.desc }}</p>
+
+    </div>
+
+
+
+
